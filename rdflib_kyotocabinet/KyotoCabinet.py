@@ -11,6 +11,7 @@ import logging
 from os import mkdir
 from os.path import exists, abspath
 from urllib import pathname2url
+import rdflib
 from rdflib import URIRef
 from rdflib.store import Store
 from rdflib.store import VALID_STORE
@@ -24,6 +25,10 @@ def bb(u): return u.encode('utf-8')
 logging.basicConfig(level=logging.ERROR,format="%(message)s")
 _logger = logging.getLogger(__name__)
 _logger.setLevel(logging.ERROR)
+
+rdflib.plugin.register(
+    "Kyotocabinet", rdflib.store.Store,
+    "rdflib_kyotocabinet.KyotoCabinet", "KyotoCabinet")
 
 class NoopMethods(object):
     def __getattr__(self, methodName):
