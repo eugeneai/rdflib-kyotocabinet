@@ -88,9 +88,7 @@ config = dict(
     packages=["rdflib_kyotocabinet"],
     test_suite="test",
     install_requires=["rdflib>=3.0",
-                      "Kyoto_Cabinet",
-# "kyotocabinet-python-legacy>=1.16", # Python 2
-# "kyotocabinet-python>=1.20", # Python 3
+                      "kyotocabinet",
                       ],
     entry_points={
         'rdf.plugins.store': [
